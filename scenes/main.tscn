@@ -1,14 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgko7ayudwtab"]
+[gd_scene load_steps=5 format=3 uid="uid://bgko7ayudwtab"]
 
-[ext_resource type="PackedScene" uid="uid://685jt2rla472" path="res://scenes/Levels/level_root.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://685jt2rla472" path="res://scenes/Levels/level_1.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://b1hxvr42chflj" path="res://scripts/main.gd" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://lol6lo72qah4" path="res://scenes/player.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dhdrknoogd3wi" path="res://scenes/death_screen.tscn" id="3_sugp2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_sugp2")
 
-[node name="LevelRoot" parent="." instance=ExtResource("1_o5qli")]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(650, 359)
+
+[node name="Player" parent="." instance=ExtResource("2_jyhfs")]
+z_index = 1
+position = Vector2(114.999985, 482)
+
+[node name="LevelContainer" type="Node2D" parent="."]
 position = Vector2(528, 674)
+
+[node name="Level_1" parent="LevelContainer" instance=ExtResource("1_o5qli")]
 scale = Vector2(1, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

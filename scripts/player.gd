@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	if !alive:
 		#await get_tree().create_timer(0.4).timeout
 		GameManager.score = 0
-		$"../../CanvasLayer/DeathScreen".show()
+		$"../CanvasLayer/DeathScreen".show()
 		await get_tree().create_timer(2.0).timeout
 		get_tree().paused = true
 		return
