@@ -20,12 +20,18 @@ func change_level(next_level_path: String):
 	var level_resource = load(next_level_path)
 	var new_level = level_resource.instantiate()
 	
+	#Find the spawn point for New level
+	var spawn_point = new_level.get_node_or_null("SpawnPoint")
+	if spawn_point and $Player:
+		$Player.global_position = spawn_point.global_position
+	
 	# Add to LevelContainer (FIXED: was adding to wrong parent)
 	$LevelContainer.add_child(new_level)
 	new_level.name = "Level_1"
 	
 	# Update reference
 	current_level = new_level
+	
 	
 	# Reset GameManager score for new level
 	GameManager.score = 0

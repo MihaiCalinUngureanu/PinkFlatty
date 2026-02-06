@@ -358,3 +358,6 @@ offset_top = -664.6667
 offset_right = -501.33334
 offset_bottom = -664.6667
 metadata/_edit_use_anchors_ = true
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-400, -165)

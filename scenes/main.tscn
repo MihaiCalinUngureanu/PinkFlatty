@@ -13,7 +13,7 @@ position = Vector2(650, 359)
 
 [node name="Player" parent="." instance=ExtResource("2_jyhfs")]
 z_index = 1
-position = Vector2(114.999985, 482)
+position = Vector2(115, 480)
 
 [node name="LevelContainer" type="Node2D" parent="."]
 position = Vector2(528, 674)
