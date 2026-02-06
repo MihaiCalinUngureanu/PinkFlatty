@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqbs504jkofo"]
+
+[ext_resource type="Script" uid="uid://wj3e7rrwu80a" path="res://scripts/score_label.gd" id="1_nt7q6"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.57862467, 0, 0.15448904, 1)
+theme_override_font_sizes/font_size = 25
+text = "Apples: 0"
+script = ExtResource("1_nt7q6")
+metadata/_edit_use_anchors_ = true
