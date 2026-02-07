@@ -3,6 +3,15 @@ extends Node2D
 # Current level instance
 var current_level = null
 
+func _process(delta):
+	if Input.is_action_just_pressed("Escape"):
+		toggle_pause()
+		
+func toggle_pause():
+	var pause_state = !get_tree().paused
+	get_tree().paused = pause_state
+	$CanvasLayer/PauseMenu.visible = pause_state
+
 func _ready() -> void:
 	# Get the first level from LevelContainer
 	if $LevelContainer.get_child_count() > 0:
@@ -20,14 +29,16 @@ func change_level(next_level_path: String):
 	var level_resource = load(next_level_path)
 	var new_level = level_resource.instantiate()
 	
-	#Find the spawn point for New level
-	var spawn_point = new_level.get_node_or_null("SpawnPoint")
-	if spawn_point and $Player:
-		$Player.global_position = spawn_point.global_position
+	
 	
 	# Add to LevelContainer (FIXED: was adding to wrong parent)
 	$LevelContainer.add_child(new_level)
 	new_level.name = "Level_1"
+	
+	#Find the spawn point for New level
+	var spawn_point = new_level.get_node_or_null("SpawnPoint")
+	if spawn_point and $Player:
+		$Player.set_deferred("global_position", spawn_point.global_position)
 	
 	# Update reference
 	current_level = new_level
@@ -60,3 +71,4 @@ func _on_level_completed():
 func _on_player_died(body):
 	body.die()
 	print("Player died")
+	
